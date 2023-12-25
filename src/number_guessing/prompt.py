@@ -1,8 +1,8 @@
 # Instruction
 background_prompt_guess = {
-    "first_guess": "Now you are participating in a number-guessing game. You are the one in charge of guessing. The number will be an integer ranging from 1 to 100. After you made a guess, you will be informed if your guess is right, higher than the answer, or lower than the answer. Now please make your first guess. {persona}Only reply the number (e.g., 12). {advanced_settings}",
+    "first_guess": "Now you are participating in a number-guessing game. You are the one in charge of guessing. The number will be an integer ranging from 1 to 100. After you made a guess, you will be informed if your guess is right, higher than the answer, or lower than the answer. Now please make your first guess. {persona}. Only reply the number (e.g., 12) as is, dont add anything else to the guess as is, dont add anything else to the guess. {advanced_settings}",
 
-    "make_guess": "You are participating in a number-guessing game and you are the one to guess the number. The number will be an integer ranging from 1 to 100. Your previous guess was {prev_guess}. The history of your guess is {history}. {persona}Only reply the number (e.g., 12). {advanced_settings}",
+    "make_guess": "You are participating in a number-guessing game and you are the one to guess the number. The number will be an integer ranging from 1 to 100. Your previous guess was {prev_guess}. The history of your guess is {history}. {persona} Only reply the number (e.g., 12) as is, dont add anything else like explanation to the guess. {advanced_settings}",
 
     "explain_guess": "You are participating in a number guessing game and you are the one to guess the number. The number will be an integer number range from 1 to 100. The history of your guess is {history}. Can you briefly explain why you make your previous guess as {prev_guess}? (No longer than 40 words.)",
 
@@ -12,17 +12,17 @@ background_prompt_guess = {
 
     "planning": "You are participating in a number-guessing game and you are the one to guess the number. The number will be an integer ranging from 1 to 100. Your previous guess was {prev_guess}. The history of your guess is {history}. {persona}Based on your guess history, what is your strategy for the next few guesses?",
 
-    "planning_reprompt": "You are participating in a number-guessing game and you are the one to guess the number. The number will be an integer ranging from 1 to 100. Your previous guess was {prev_guess}. The history of your guess is {history}. Your strategy for this guess is {strategy}. {persona}Only reply the number (e.g., 12).",
+    "planning_reprompt": "You are participating in a number-guessing game and you are the one to guess the number. The number will be an integer ranging from 1 to 100. Your previous guess was {prev_guess}. The history of your guess is {history}. Your strategy for this guess is {strategy}. {persona}Only reply the number (e.g., 12) as is, dont add anything else to the guess.",
 
-    "hint_first_guess": "Now you are participating in a number-guessing game. You are the one in charge of guessing. The number will be an integer ranging from 1 to 100. After you made a guess, you will be informed if your guess is right, higher than the answer, or lower than the answer. To help you guess the number, your opponent gives you a hint: {hint}. Now please make your first guess. {persona}Only reply the number (e.g., 12).",
+    "hint_first_guess": "Now you are participating in a number-guessing game. You are the one in charge of guessing. The number will be an integer ranging from 1 to 100. After you made a guess, you will be informed if your guess is right, higher than the answer, or lower than the answer. To help you guess the number, your opponent gives you a hint: {hint}. Now please make your first guess. {persona}Only reply the number (e.g., 12) as is, dont add anything else to the guess.",
 
-    "hint_make_guess": "You are participating in a number-guessing game and you are the one to guess the number. The number will be an integer ranging from 1 to 100. To help you guess the number, your opponent gives you a hint: {hint}. Your previous guess was {prev_guess}. The history of your guess is {history}. {persona}Only reply the number (e.g., 12).",
+    "hint_make_guess": "You are participating in a number-guessing game and you are the one to guess the number. The number will be an integer ranging from 1 to 100. To help you guess the number, your opponent gives you a hint: {hint}. Your previous guess was {prev_guess}. The history of your guess is {history}. {persona}Only reply the number (e.g., 12) as is, dont add anything else to the guess.",
 }
 
 background_prompt_judge = {
-    "generate_number": "Now you are participating in a number-guessing game. You are the one responsible for thinking up the numbers. Please think of an integer, ranging from 1 to 100. Only reply the number (e.g., 12).",
+    "generate_number": "Now you are participating in a number-guessing game. You are the one responsible for thinking up the numbers. Please think of any random integer between 1 and 100. Only reply the number (e.g., 12) as is, dont add anything else to the hint.",
 
-    "judge_guess": "You are participating in a number guessing game and you are the one responsible for thinking up the numbers. You decided {target_number} as the answer. Your opponent had made a guess of {guess}. Can you tell your opposite if the guess is right, higher than the answer, or lower than the answer? If the guess is correct, please say 'Congratulations!'.",
+    "judge_guess": "You are participating in a number guessing game and you are the one responsible for thinking up the numbers. You decided {target_number} as the answer. Your opponent had made a guess of {guess}. Can you tell your opposite if the guess is right, higher than the answer, or lower than the answer? Respond 'Congratulations!' if guess is correct, ask user to try again and dont reveal the correct if the guess is incorrect",
 
     "hint": "You are participating in a number-guessing game and you are the one responsible for thinking up the numbers. You decided {target_number} as the answer. To help your opponent guess the number, can you give a hint to your opponent?"
 }

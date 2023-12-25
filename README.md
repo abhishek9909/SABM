@@ -72,7 +72,13 @@ The `<set_guess_number>` is used to guess a fixed number.
 The `<interpretation_guess>` is used for model interpretation.
 
 ```bash
-python main_number_guessing.py --model_version "gpt-4-0613" --persona "conservative" --advanced "domain_knowledge" --set_guess_number --interpretation_guess
+python main_number_guessing.py --model "gpt-4-0613" --persona "conservative" --advanced "domain_knowledge" --set_guess_number --interpretation_guess
+```
+
+To run the same number_guessing game experiment with huggingface_hub inference clients:
+
+```bash
+python main_number_guessing.py --model "mistralai/Mixtral-8x7B-Instruct-v0.1" --api_type "gradio" --temperature "0.1"
 ```
 
 ### Emergency Evacuation ![Static Badge](https://img.shields.io/badge/GPT-%2440%2Frun-green)
