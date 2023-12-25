@@ -3,7 +3,10 @@ import os
 try:
     api_key = open('apikey.token').readline().strip()
 except:
-    api_key = os.environ["OPENAI_API_KEY"]    
+    try:
+        api_key = os.environ["OPENAI_API_KEY"]
+    except:
+        api_key = '' 
 
 from src.number_guessing.arguments import argparser
 import src.number_guessing.number_guessing as number_guessing
@@ -17,6 +20,8 @@ def main(args):
     number_guessing.advanced_settings = args.advanced
     number_guessing.api_base = args.api_base
     number_guessing.api_type = args.api_type
+    number_guessing.temperature = args.temperature
+    number_guessing.max_tokens = args.max_tokens
 
     number_guessing.simulation()
 

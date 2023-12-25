@@ -15,3 +15,5 @@ argparser.add_argument("--api_type", type=str, default='openai')
 argparser.add_argument("--api_base", type=str, default='')
 
 argparser.add_argument("--advanced", type=str, default='default')
+argparser.add_argument("--temperature", type=str, default='0.5')
+argparser.add_argument("--max_tokens", type=str, default='128')

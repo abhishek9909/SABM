@@ -11,12 +11,14 @@ api_base = ""
 interpretation_guess = False
 advanced_settings = "default"
 model_ver = 'gpt-4-0613'
+temperature = 0.5
+max_tokens = 128
 
 # Simulation
 def simulation():
     # Agent setup
-    agent1 = GPT.Agent(temperature = 0.5, model= model_ver, max_tokens = 128, api_key = api_key, api_type = api_type, api_base = api_base)
-    agent2 = GPT.Agent(temperature = 0.5, model= model_ver, max_tokens = 128, api_key = api_key, api_type = api_type, api_base = api_base)
+    agent1 = GPT.Agent(temperature = temperature, model= model_ver, max_tokens = max_tokens, api_key = api_key, api_type = api_type, api_base = api_base)
+    agent2 = GPT.Agent(temperature = temperature, model= model_ver, max_tokens = max_tokens, api_key = api_key, api_type = api_type, api_base = api_base)
 
     # Generate target number
     if fixed_guess_number == False:
@@ -31,18 +33,19 @@ def simulation():
 
     if advanced_settings not in ["reasoning", "planning", "hint"]:
         answer = agent1.communicate(prompt.background_prompt_guess["first_guess"].format(persona = prompt.persona_prompt[persona_type], advanced_settings = prompt.advanced_settings_prompt[advanced_settings]))
+        print(f'answer: {answer}')
         guess.append(int(answer))
     elif advanced_settings == "reasoning":
         answer = agent1.communicate(prompt.background_prompt_guess["reasoning_first_guess"].format(persona = prompt.persona_prompt[persona_type]))
-        print(answer.split('\n')[0])
+        print(f"reasoning: {answer}")
         guess.append(int(answer.split('\n')[1]))     
     elif advanced_settings == "planning":
         answer = agent1.communicate(prompt.background_prompt_guess["first_guess"].format(persona = prompt.persona_prompt[persona_type], advanced_settings = prompt.advanced_settings_prompt["default"]))
+        print(f'planning: {answer}')
         guess.append(int(answer))
     elif advanced_settings == "hint":
         hint = agent2.communicate(prompt.background_prompt_judge["hint"].format(target_number = target_number))
-        print(hint)
-
+        print(f'hint: {hint}')
         answer = agent1.communicate(prompt.background_prompt_guess["hint_first_guess"].format(hint = hint, persona = prompt.persona_prompt[persona_type]))
         guess.append(int(answer))
 
@@ -58,7 +61,7 @@ def simulation():
         print(guess[-1])
 
         # Exit condition
-        if 'congratulations' in response.lower(): break
+        if 'congratulations' in response.lower() and 'try' not in response.lower: break
         guess_round += 1
 
         # Guess
